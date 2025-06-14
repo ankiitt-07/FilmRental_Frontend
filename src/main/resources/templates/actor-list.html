@@ -10,12 +10,12 @@
     <h1>Actor List</h1>
 
     <div class="mb-3">
-        <a th:href="@{/actors/add}" class="btn btn-success">Insert New Actor</a>
-        <a th:href="@{/actors/top-ten}" class="btn btn-info">View Top 10 Actors</a>
+        <a th:href="@{/actors/actors/add}" class="btn btn-success">Insert New Actor</a>
+        <a th:href="@{/actors/actors/top-ten}" class="btn btn-info">View Top 10 Actors</a>
     </div>
 
     <div class="mb-3">
-        <form th:action="@{/actors/search}" method="get" class="row g-3" id="searchForm">
+        <form th:action="@{/actors/actors/search}" method="get" class="row g-3" id="searchForm">
             <div class="col-md-4">
                 <input type="text" name="firstName" id="firstName" class="form-control" placeholder="Search by First Name" th:value="${param.firstName}">
             </div>
@@ -24,87 +24,77 @@
             </div>
             <div class="col-md-4">
                 <button type="submit" class="btn btn-primary" id="searchButton" disabled>Search</button>
-                <form th:action="@{/actors/search}" method="get" class="row g-3">
-                    <div class="col-md-4">
-                        <input type="text" name="firstName" class="form-control" placeholder="Search by First Name">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" name="lastName" class="form-control" placeholder="Search by Last Name">
-                    </div>
-                    <div class="col-md-4">
-                        <button type="submit" class="btn btn-primary">Search</button>
-                    </div>
-                </form>
             </div>
-
-            <div th:if="${param.success}" class="alert alert-success">
-                <span th:text="${param.success}"></span>
-            </div>
-            <div th:if="${param.error}" class="alert alert-danger">
-                <span th:text="${param.error}"></span>
-            </div>
-
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr th:each="actor : ${actors}">
-                    <td th:text="${actor.actorId}"></td>
-                    <td th:text="${actor.firstName}"></td>
-                    <td th:text="${actor.lastName}"></td>
-                    <td>
-                        <a th:href="@{/actors/edit/{id}(id=${actor.actorId})}" class="btn btn-primary btn-sm">Edit</a>
-                        <a th:href="@{/actors/{id}/films(id=${actor.actorId})}" class="btn btn-info btn-sm">View Films</a>
-                    </td>
-                </tr>
-                <tr th:if="${actors == null or actors.empty}">
-                    <td colspan="4">No actors found</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <div th:if="${actors != null and !actors.empty}">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination">
-                        <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
-                            <a class="page-link" th:href="@{/actors(page=${currentPage - 1},size=10)}">Previous</a>
-                        </li>
-                        <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
-                            th:classappend="${i == currentPage} ? 'active'">
-                            <a class="page-link" th:href="@{/actors(page=${i},size=10)}" th:text="${i + 1}"></a>
-                        </li>
-                        <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
-                            <a class="page-link" th:href="@{/actors(page=${currentPage + 1},size=10)}">Next</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+        </form>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const firstNameInput = document.getElementById('firstName');
-            const lastNameInput = document.getElementById('lastName');
-            const searchButton = document.getElementById('searchButton');
+    <div th:if="${param.success}" class="alert alert-success">
+        <span th:text="${param.success}"></span>
+    </div>
+    <div th:if="${param.error}" class="alert alert-danger">
+        <span th:text="${param.error}"></span>
+    </div>
 
-            function toggleSearchButton() {
-                const firstName = firstNameInput.value.trim();
-                const lastName = lastNameInput.value.trim();
-                searchButton.disabled = !(firstName || lastName);
-            }
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="actor : ${actors}">
+            <td th:text="${actor.actorId}"></td>
+            <td th:text="${actor.firstName}"></td>
+            <td th:text="${actor.lastName}"></td>
+            <td>
+                <a th:href="@{/actors/actors/edit/{id}(id=${actor.actorId})}" class="btn btn-primary btn-sm">Edit</a>
+                <a th:href="@{/actors/actors/{id}/films(id=${actor.actorId})}" class="btn btn-info btn-sm">View Films</a>
+            </td>
+        </tr>
+        <tr th:if="${actors == null or actors.empty}">
+            <td colspan="4">No actors found</td>
+        </tr>
+        </tbody>
+    </table>
 
-            firstNameInput.addEventListener('input', toggleSearchButton);
-            lastNameInput.addEventListener('input', toggleSearchButton);
+    <div th:if="${actors != null and !actors.empty}">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item" th:classappend="${currentPage == 0} ? 'disabled'">
+                    <a class="page-link" th:href="@{/actors(page=${currentPage - 1},size=10)}">Previous</a>
+                </li>
+                <li class="page-item" th:each="i : ${#numbers.sequence(0, totalPages - 1)}"
+                    th:classappend="${i == currentPage} ? 'active'">
+                    <a class="page-link" th:href="@{/actors(page=${i},size=10)}" th:text="${i + 1}"></a>
+                </li>
+                <li class="page-item" th:classappend="${currentPage == totalPages - 1} ? 'disabled'">
+                    <a class="page-link" th:href="@{/actors(page=${currentPage + 1},size=10)}">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
 
-            // Initial check
-            toggleSearchButton();
-        });
-    </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const firstNameInput = document.getElementById('firstName');
+        const lastNameInput = document.getElementById('lastName');
+        const searchButton = document.getElementById('searchButton');
+
+        function toggleSearchButton() {
+            const firstName = firstNameInput.value.trim();
+            const lastName = lastNameInput.value.trim();
+            searchButton.disabled = !(firstName || lastName);
+        }
+
+        firstNameInput.addEventListener('input', toggleSearchButton);
+        lastNameInput.addEventListener('input', toggleSearchButton);
+
+        toggleSearchButton();
+    });
+</script>
 </body>
 </html>

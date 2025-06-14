@@ -65,7 +65,7 @@ public class FilmWebController {
         return "film-list";
     }
 
-    @GetMapping("/films/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Integer id, Model model) {
         try {
 
@@ -92,7 +92,7 @@ public class FilmWebController {
         }
     }
 
-    @PostMapping("/films/update/{id}")
+    @PostMapping("/update/{id}")
     public String updateFilm(@PathVariable Integer id, @ModelAttribute FilmDTO filmDto) {
         try {
             LOGGER.info("Updating film ID: {} with data: {}", id, filmDto);
@@ -127,7 +127,7 @@ public class FilmWebController {
         }
     }
 
-    @GetMapping("/films/add")
+    @GetMapping("/add")
     public String showAddForm(Model model) {
         LOGGER.info("Showing add film form");
         FilmDTO filmDto = new FilmDTO();
@@ -175,7 +175,7 @@ public class FilmWebController {
         return "film-add";
     }
 
-    @PostMapping("/films/add")
+    @PostMapping("/add")
     public String addFilm(@ModelAttribute FilmDTO filmDto, Model model) {
         if (filmDto == null || filmDto.getTitle() == null || filmDto.getLanguageId() == null || filmDto.getReplacementCost() == null) {
             LOGGER.warn("Invalid film data submitted: {}", filmDto);
