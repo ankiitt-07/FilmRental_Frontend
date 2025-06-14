@@ -1,81 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>City List - Film Rental Store</title>-->
-<!--    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">-->
-<!--</head>-->
-<!--<body class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 min-h-screen font-sans">-->
-<!--<div class="container mx-auto p-8">-->
-<!--    &lt;!&ndash; Header &ndash;&gt;-->
-<!--    <header class="mb-8">-->
-<!--        <h1 class="text-5xl font-extrabold text-center text-indigo-800 drop-shadow-lg">City List</h1>-->
-<!--        <p class="text-center text-gray-600 mt-3 text-lg">Explore cities in the Film Rental Store database</p>-->
-<!--    </header>-->
-
-<!--    &lt;!&ndash; Error Message &ndash;&gt;-->
-<!--    <div th:if="${error}" class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">-->
-<!--        <span th:text="${error}"></span>-->
-<!--    </div>-->
-
-<!--    &lt;!&ndash; Table Section &ndash;&gt;-->
-<!--    <section th:if="${cities != null}" class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">-->
-<!--        <div class="overflow-x-auto">-->
-<!--            <table class="min-w-full">-->
-<!--                <thead class="bg-indigo-600 text-white">-->
-<!--                <tr>-->
-<!--                    <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider">City ID</th>-->
-<!--                    <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider">City Name</th>-->
-<!--                    <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider">Country ID</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody class="divide-y divide-gray-200">-->
-<!--                <tr th:each="city : ${cities.content}" class="hover:bg-indigo-50 transition duration-200">-->
-<!--                    <td class="py-4 px-6 text-gray-700" th:text="${city.cityId}"></td>-->
-<!--                    <td class="py-4 px-6 text-gray-700" th:text="${city.city}"></td>-->
-<!--                    <td class="py-4 px-6 text-gray-700" th:text="${city.countryId}"></td>-->
-<!--                </tr>-->
-<!--                <tr th:if="${cities.content.isEmpty}">-->
-<!--                    <td colspan="3" class="py-4 px-6 text-center text-gray-500">No cities found.</td>-->
-<!--                </tr>-->
-<!--                </tbody>-->
-<!--            </table>-->
-<!--        </div>-->
-<!--    </section>-->
-
-<!--    &lt;!&ndash; Pagination Section &ndash;&gt;-->
-<!--    <section th:if="${cities != null and !cities.content.isEmpty}" class="mt-6 flex justify-between items-center bg-gradient-to-r from-indigo-50 to-purple-50 p-5 rounded-2xl shadow-lg border border-gray-200">-->
-<!--        &lt;!&ndash; Items per page &ndash;&gt;-->
-<!--        <div class="flex items-center space-x-3">-->
-<!--            <label for="size" class="text-gray-700 font-medium">Items per page</label>-->
-<!--            <select id="size" th:onchange="'window.location.href=\'/cities/list?page=' + ${currentPage} + '&size=' + this.value" class="border border-gray-300 rounded-lg px-3 py-1 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500">-->
-<!--                <option value="10" th:selected="${pageSize == 10}">10</option>-->
-<!--                <option value="25" th:selected="${pageSize == 25}">25</option>-->
-<!--                <option value="50" th:selected="${pageSize == 50}">50</option>-->
-<!--                <option value="100" th:selected="${pageSize == 100}">100</option>-->
-<!--            </select>-->
-<!--            <span class="text-gray-700 font-medium" th:text="'1-' + ${cities.numberOfElements > 0 ? (cities.number * cities.size + cities.numberOfElements) : 0} + ' of ' + ${cities.totalElements} + ' items'"></span>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Pagination navigation &ndash;&gt;-->
-<!--        <div class="flex items-center space-x-3">-->
-<!--            <a th:href="@{/cities/list(page=0,size=${pageSize})}" class="text-indigo-600 hover:text-indigo-800 font-medium" th:classappend="${currentPage == 0 ? 'pointer-events-none text-gray-400' : ''}">«</a>-->
-<!--            <a th:href="@{/cities/list(page=${currentPage - 1},size=${pageSize})}" class="text-indigo-600 hover:text-indigo-800 font-medium" th:classappend="${currentPage == 0 ? 'pointer-events-none text-gray-400' : ''}">Previous</a>-->
-<!--            <span class="text-gray-700 font-medium" th:text="${currentPage + 1} + ' of ' + ${cities.totalPages}"></span>-->
-<!--            <a th:href="@{/cities/list(page=${currentPage + 1},size=${pageSize})}" class="text-indigo-600 hover:text-indigo-800 font-medium" th:classappend="${currentPage == cities.totalPages - 1 ? 'pointer-events-none text-gray-400' : ''}">Next</a>-->
-<!--            <a th:href="@{/cities/list(page=${cities.totalPages - 1},size=${pageSize})}" class="text-indigo-600 hover:text-indigo-800 font-medium" th:classappend="${currentPage == cities.totalPages - 1 ? 'pointer-events-none text-gray-400' : ''}">»</a>-->
-<!--        </div>-->
-<!--    </section>-->
-
-<!--    &lt;!&ndash; Footer &ndash;&gt;-->
-<!--    <footer class="mt-8 text-center text-gray-600">-->
-<!--        <p>© 2025 Film Rental Store. All rights reserved.</p>-->
-<!--    </footer>-->
-<!--</div>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -85,37 +7,37 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 <body class="bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 min-h-screen font-sans">
-<div class="container mx-auto p-8">
+<div class="container mx-auto px-4 py-8 sm:px-6 lg:px-8"> <!-- Adjusted padding for responsiveness -->
     <!-- Header -->
     <header class="mb-8">
-        <h1 class="text-5xl font-extrabold text-center text-indigo-800 drop-shadow-lg">City List</h1>
-        <p class="text-center text-gray-600 mt-3 text-lg">Explore cities in the Film Rental Store database</p>
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-center text-indigo-800 drop-shadow-lg">City List</h1>
+        <p class="text-center text-gray-600 mt-3 text-base sm:text-lg">Explore cities in the Film Rental Store database</p>
     </header>
 
     <!-- Error Message -->
-    <div th:if="${error}" class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+    <div th:if="${error}" class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg text-sm sm:text-base"> <!-- Added text size scaling -->
         <span th:text="${error}"></span>
     </div>
 
     <!-- Table Section -->
     <section th:if="${cities != null}" class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
         <div class="overflow-x-auto">
-            <table class="min-w-full">
+            <table class="min-w-full table-auto"> <!-- Added table-auto for better column sizing -->
                 <thead class="bg-indigo-600 text-white">
                 <tr>
-                    <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider">City ID</th>
-                    <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider">City Name</th>
-                    <th class="py-4 px-6 text-left font-semibold uppercase tracking-wider">Country ID</th>
+                    <th class="py-3 px-4 text-left font-semibold uppercase tracking-wider text-xs sm:text-sm">City ID</th> <!-- Reduced padding, scaled text -->
+                    <th class="py-3 px-4 text-left font-semibold uppercase tracking-wider text-xs sm:text-sm">City Name</th>
+                    <th class="py-3 px-4 text-left font-semibold uppercase tracking-wider text-xs sm:text-sm">Country ID</th>
                 </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                 <tr th:each="city : ${cities.content}" th:if="${cities.content != null}" class="hover:bg-indigo-50 transition duration-200">
-                    <td class="py-4 px-6 text-gray-700" th:text="${city.cityId}"></td>
-                    <td class="py-4 px-6 text-gray-700" th:text="${city.city}"></td>
-                    <td class="py-4 px-6 text-gray-700" th:text="${city.countryId}"></td>
+                    <td class="py-3 px-4 text-gray-700 text-sm sm:text-base" th:text="${city.cityId}"></td> <!-- Consistent padding, text scaling -->
+                    <td class="py-3 px-4 text-gray-700 text-sm sm:text-base" th:text="${city.city}"></td>
+                    <td class="py-3 px-4 text-gray-700 text-sm sm:text-base" th:text="${city.countryId}"></td>
                 </tr>
                 <tr th:if="${cities.content == null or cities.content.isEmpty}">
-                    <td colspan="3" class="py-4 px-6 text-center text-gray-500">No cities found.</td>
+                    <td colspan="3" class="py-3 px-4 text-center text-gray-500 text-sm sm:text-base">No cities found.</td>
                 </tr>
                 </tbody>
             </table>
@@ -123,52 +45,42 @@
     </section>
 
     <!-- Pagination Section -->
-    <section th:if="${cities != null and cities.content != null and !cities.content.isEmpty}" class="mt-6 flex justify-center items-center bg-gradient-to-r from-indigo-50 to-purple-50 p-5 rounded-2xl shadow-lg border border-gray-200">
+    <section th:if="${cities != null and cities.content != null and !cities.content.isEmpty and cities.totalPages > 0}" class="mt-6 flex flex-col items-center bg-gradient-to-r from-indigo-50 to-purple-50 p-4 sm:p-5 rounded-2xl shadow-lg border border-gray-200">
         <nav aria-label="Page navigation">
-            <ul class="flex space-x-2">
+            <ul class="flex flex-wrap justify-center gap-2"> <!-- Changed to flex-wrap and gap-2 for better spacing -->
                 <!-- Previous Button -->
-                <li th:classappend="${currentPage == 0} ? 'pointer-events-none opacity-50'">
-                    <a th:href="@{/cities/list(page=${currentPage - 1},size=${pageSize})}" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-200">Previous</a>
+                <li th:classappend="${currentPage == 0} ? 'pointer-events-none opacity-50' : ''">
+                    <a th:href="@{/cities(page=${currentPage - 1},size=${pageSize})}" class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-200 text-sm sm:text-base">Previous</a> <!-- Adjusted padding -->
                 </li>
 
-                <!-- First Page -->
-                <li th:classappend="${currentPage == 0} ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600 border border-gray-300'">
-                    <a th:href="@{/cities/list(page=0,size=${pageSize})}" class="px-4 py-2 rounded-lg hover:bg-indigo-100 transition duration-200" th:text="1"></a>
-                </li>
-
-                <!-- Ellipsis if currentPage > 3 -->
-                <li class="pointer-events-none" th:if="${currentPage > 3}">
-                    <span class="px-4 py-2 text-gray-700">...</span>
-                </li>
-
-                <!-- Middle Pages (show 2 pages before and 2 after the current page, if possible) -->
-                <th:block th:each="i : ${#numbers.sequence(currentPage - 2 > 1 ? currentPage - 2 : 1, currentPage + 2 < cities.totalPages - 1 ? currentPage + 2 : cities.totalPages - 1)}"
-                          th:if="${i > 0 and i < cities.totalPages - 1}">
-                    <li th:classappend="${i == currentPage} ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600 border border-gray-300'">
-                        <a th:href="@{/cities/list(page=${i},size=${pageSize})}" class="px-4 py-2 rounded-lg hover:bg-indigo-100 transition duration-200" th:text="${i + 1}"></a>
+                <!-- Page Numbers -->
+                <th:block th:each="i : ${#numbers.sequence(0, cities.totalPages - 1)}">
+                    <li th:classappend="${i == currentPage} ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600 border border-gray-300 hover:bg-indigo-100'">
+                        <a th:href="@{/cities(page=${i},size=${pageSize})}" class="px-3 py-2 rounded-lg transition duration-200 text-sm sm:text-base" th:text="${i + 1}"></a>
                     </li>
                 </th:block>
 
-                <!-- Ellipsis if currentPage < totalPages - 4 -->
-                <li class="pointer-events-none" th:if="${currentPage < cities.totalPages - 4}">
-                    <span class="px-4 py-2 text-gray-700">...</span>
-                </li>
-
-                <!-- Last Page (if totalPages > 1) -->
-                <li th:classappend="${currentPage == cities.totalPages - 1} ? 'bg-indigo-600 text-white' : 'bg-white text-indigo-600 border border-gray-300'" th:if="${cities.totalPages > 1}">
-                    <a th:href="@{/cities/list(page=${cities.totalPages - 1},size=${pageSize})}" class="px-4 py-2 rounded-lg hover:bg-indigo-100 transition duration-200" th:text="${cities.totalPages}"></a>
-                </li>
-
                 <!-- Next Button -->
-                <li th:classappend="${currentPage == cities.totalPages - 1} ? 'pointer-events-none opacity-50'">
-                    <a th:href="@{/cities/list(page=${currentPage + 1},size=${pageSize})}" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-200">Next</a>
+                <li th:classappend="${currentPage == cities.totalPages - 1} ? 'pointer-events-none opacity-50' : ''">
+                    <a th:href="@{/cities(page=${currentPage + 1},size=${pageSize})}" class="px-3 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-200 text-sm sm:text-base">Next</a>
                 </li>
             </ul>
         </nav>
+        <!-- Items per page -->
+        <div class="flex flex-col sm:flex-row items-center gap-3 mt-4"> <!-- Changed to flex-col for mobile, flex-row for larger screens -->
+            <label for="size" class="text-gray-700 font-medium text-sm sm:text-base">Items per page</label>
+            <select id="size" th:onchange="'window.location.href=\'/cities?page=0&size=' + this.value" class="border border-gray-300 rounded-lg px-2 py-1 bg-white text-gray-700 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="10" th:selected="${pageSize == 10}">10</option>
+                <option value="25" th:selected="${pageSize == 25}">25</option>
+                <option value="50" th:selected="${pageSize == 50}">50</option>
+                <option value="100" th:selected="${pageSize == 100}">100</option>
+            </select>
+            <span class="text-gray-700 font-medium text-sm sm:text-base" th:text="'Showing ' + ${cities.numberOfElements > 0 ? (cities.number * cities.size + 1) : 0} + '-' + ${cities.numberOfElements > 0 ? (cities.number * cities.size + cities.numberOfElements) : 0} + ' of ' + ${cities.totalElements} + ' items'"></span>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="mt-8 text-center text-gray-600">
+    <footer class="mt-8 text-center text-gray-600 text-sm sm:text-base">
         <p>© 2025 Film Rental Store. All rights reserved.</p>
     </footer>
 </div>
