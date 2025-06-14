@@ -1,207 +1,204 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Roster</title>
-    <!-- Add Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        /* Existing CSS with adjustments for icons */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            min-height: 100vh;
-            padding: 3rem 1rem;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        .title {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #1a202c;
-            margin-bottom: 1rem;
-        }
-        .subtitle {
-            font-size: 1.25rem;
-            color: #64748b;
-        }
-        .teams-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-        .team-card {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 0.75rem;
-            padding: 1.5rem;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-        .team-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        }
-        .team-icon {
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-        .team-card:hover .team-icon {
-            transform: rotate(10deg) scale(1.1);
-        }
-        .team-name {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #1a202c;
-            text-align: center;
-            transition: color 0.3s ease;
-        }
-        .team-card:hover .team-name {
-            color: #3b82f6;
-        }
-        .team-divider {
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-        .team-card:hover .team-divider {
-            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
-        }
-        .footer {
-            text-align: center;
-            color: #64748b;
-        }
-        .thunder-hawks { background: #3b82f6; }
-        .fire-dragons { background: #ef4444; }
-        .storm-eagles { background: #8b5cf6; }
-        .lightning-wolves { background: #eab308; }
-        .ice-panthers { background: #06b6d4; }
-        .shadow-tigers { background: #374151; }
-        .golden-lions { background: #f59e0b; }
-        .ocean-sharks { background: #14b8a6; }
-        .icon {
-            font-size: 32px; /* Size for Font Awesome icons */
-            color: white; /* Icon color */
-            text-align: center;
-        }
-        @media (max-width: 768px) {
-            .title {
-                font-size: 2rem;
-            }
-            .teams-grid {
-                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-                gap: 1rem;
-            }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="header">
-        <h1 class="title">Film Rental Project</h1>
-    </div>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Team Roster</title>-->
+<!--    &lt;!&ndash; Add Font Awesome CDN &ndash;&gt;-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">-->
+<!--    <style>-->
+<!--        /* Existing CSS with adjustments for icons */-->
+<!--        * {-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+<!--        body {-->
+<!--            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;-->
+<!--            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);-->
+<!--            min-height: 100vh;-->
+<!--            padding: 3rem 1rem;-->
+<!--        }-->
+<!--        .container {-->
+<!--            max-width: 1200px;-->
+<!--            margin: 0 auto;-->
+<!--        }-->
+<!--        .header {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 3rem;-->
+<!--        }-->
+<!--        .title {-->
+<!--            font-size: 3rem;-->
+<!--            font-weight: bold;-->
+<!--            color: #1a202c;-->
+<!--            margin-bottom: 1rem;-->
+<!--        }-->
+<!--        .subtitle {-->
+<!--            font-size: 1.25rem;-->
+<!--            color: #64748b;-->
+<!--        }-->
+<!--        .teams-grid {-->
+<!--            display: grid;-->
+<!--            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));-->
+<!--            gap: 1.5rem;-->
+<!--            margin-bottom: 3rem;-->
+<!--        }-->
+<!--        .team-card {-->
+<!--            background: white;-->
+<!--            border: 1px solid #e2e8f0;-->
+<!--            border-radius: 0.75rem;-->
+<!--            padding: 1.5rem;-->
+<!--            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);-->
+<!--            transition: all 0.3s ease;-->
+<!--            cursor: pointer;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--        }-->
+<!--        .team-card:hover {-->
+<!--            transform: translateY(-5px) scale(1.02);-->
+<!--            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);-->
+<!--        }-->
+<!--        .team-icon {-->
+<!--            width: 64px;-->
+<!--            height: 64px;-->
+<!--            border-radius: 50%;-->
+<!--            margin: 0 auto 1rem;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            transition: all 0.3s ease;-->
+<!--        }-->
+<!--        .team-card:hover .team-icon {-->
+<!--            transform: rotate(10deg) scale(1.1);-->
+<!--        }-->
+<!--        .team-name {-->
+<!--            font-size: 1.25rem;-->
+<!--            font-weight: bold;-->
+<!--            color: #1a202c;-->
+<!--            text-align: center;-->
+<!--            transition: color 0.3s ease;-->
+<!--        }-->
+<!--        .team-card:hover .team-name {-->
+<!--            color: #3b82f6;-->
+<!--        }-->
+<!--        .team-divider {-->
+<!--            height: 2px;-->
+<!--            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);-->
+<!--            margin-top: 1rem;-->
+<!--            transition: all 0.3s ease;-->
+<!--        }-->
+<!--        .team-card:hover .team-divider {-->
+<!--            background: linear-gradient(90deg, transparent, #3b82f6, transparent);-->
+<!--        }-->
+<!--        .footer {-->
+<!--            text-align: center;-->
+<!--            color: #64748b;-->
+<!--        }-->
+<!--        .thunder-hawks { background: #3b82f6; }-->
+<!--        .fire-dragons { background: #ef4444; }-->
+<!--        .storm-eagles { background: #8b5cf6; }-->
+<!--        .lightning-wolves { background: #eab308; }-->
+<!--        .ice-panthers { background: #06b6d4; }-->
+<!--        .shadow-tigers { background: #374151; }-->
+<!--        .golden-lions { background: #f59e0b; }-->
+<!--        .ocean-sharks { background: #14b8a6; }-->
+<!--        .icon {-->
+<!--            font-size: 32px; /* Size for Font Awesome icons */-->
+<!--            color: white; /* Icon color */-->
+<!--            text-align: center;-->
+<!--        }-->
+<!--        @media (max-width: 768px) {-->
+<!--            .title {-->
+<!--                font-size: 2rem;-->
+<!--            }-->
+<!--            .teams-grid {-->
+<!--                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));-->
+<!--                gap: 1rem;-->
+<!--            }-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="container">-->
+<!--    <div class="header">-->
+<!--        <h1 class="title">Film Rental Project</h1>-->
+<!--    </div>-->
 
-    <div class="teams-grid">
-        <div class="team-card" onclick="navigateToController('films')">
-            <div class="team-icon thunder-hawks">
-                <i class="fas fa-film icon"></i>
-            </div>
-            <h3 class="team-name">Ankit Kumar</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--    <div class="teams-grid">-->
+<!--        <div class="team-card" onclick="navigateToController('`films`')">-->
+<!--            <div class="team-icon thunder-hawks">-->
+<!--                <i class="fas fa-film icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Ankit Kumar</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('actors')">
-            <div class="team-icon fire-dragons">
-                <i class="fas fa-user icon"></i>
-            </div>
-            <h3 class="team-name">Simran Dhiman</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--        <div class="team-card" onclick="navigateToController('actors')">-->
+<!--            <div class="team-icon fire-dragons">-->
+<!--                <i class="fas fa-user icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Simran Dhiman</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('payments')">
-            <div class="team-icon storm-eagles">
-                <i class="fas fa-credit-card icon"></i>
-            </div>
-            <h3 class="team-name">Sarvesh Kanwar</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--        <div class="team-card" onclick="navigateToController('payments')">-->
+<!--            <div class="team-icon storm-eagles">-->
+<!--                <i class="fas fa-credit-card icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Sarvesh Kanwar</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('customers')">
-            <div class="team-icon lightning-wolves">
-                <i class="fas fa-users icon"></i>
-            </div>
-            <h3 class="team-name">Ayushi</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--        <div class="team-card" onclick="navigateToController('customers')">-->
+<!--            <div class="team-icon lightning-wolves">-->
+<!--                <i class="fas fa-users icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Ayushi</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('cities')">
-            <div class="team-icon ice-panthers">
-                <i class="fas fa-city icon"></i>
-            </div>
-            <h3 class="team-name">Shivam</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--        <div class="team-card" onclick="navigateToController('cities')">-->
+<!--            <div class="team-icon ice-panthers">-->
+<!--                <i class="fas fa-city icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Shivam</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('inventory')">
-            <div class="team-icon shadow-tigers">
-                <i class="fas fa-boxes icon"></i>
-            </div>
-            <h3 class="team-name">Mehul</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--        <div class="team-card" onclick="navigateToController('inventory')">-->
+<!--            <div class="team-icon shadow-tigers">-->
+<!--                <i class="fas fa-boxes icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Mehul</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('rental')">
-            <div class="team-icon golden-lions">
-                <i class="fas fa-exchange-alt icon"></i>
-            </div>
-            <h3 class="team-name">Arvind</h3>
-            <div class="team-divider"></div>
-        </div>
+<!--        <div class="team-card" onclick="navigateToController('rental')">-->
+<!--            <div class="team-icon golden-lions">-->
+<!--                <i class="fas fa-exchange-alt icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Arvind</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
 
-        <div class="team-card" onclick="navigateToController('staff')">
-            <div class="team-icon ocean-sharks">
-                <i class="fas fa-user-tie icon"></i>
-            </div>
-            <h3 class="team-name">Harpreet</h3>
-            <div class="team-divider"></div>
-        </div>
-    </div>
+<!--        <div class="team-card" onclick="navigateToController('staff')">-->
+<!--            <div class="team-icon ocean-sharks">-->
+<!--                <i class="fas fa-user-tie icon"></i>-->
+<!--            </div>-->
+<!--            <h3 class="team-name">Harpreet</h3>-->
+<!--            <div class="team-divider"></div>-->
+<!--        </div>-->
+<!--    </div>-->
 
-    <div class="footer">
-        <p>© 2025 Film Rental Store. All rights reserved.</p>
-    </div>
-</div>
+<!--    <div class="footer">-->
+<!--        <p></p>-->
+<!--    </div>-->
+<!--</div>-->
 
-<script>
-    function navigateToController(endpoint) {
-        // Use string concatenation to construct the URL
-        const url = "http://localhost:8081/" + endpoint + "/list";
-        console.log("Navigating to:", url); // Debugging
-        window.location.href = url;
-    }
-</script>
-</body>
-</html>
+<!--<script>-->
+<!--    function navigateToController(endpoint) {-->
+<!--        window.location.href = `http://localhost:8081/${endpoint}`;-->
+<!--     }-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
