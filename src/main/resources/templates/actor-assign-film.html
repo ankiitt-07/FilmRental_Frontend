@@ -13,7 +13,7 @@
         <span th:text="${warning}"></span>
     </div>
 
-    <form th:action="@{/actors/assign-film/{id}(id=${actorId})}" method="post">
+    <form th:action="@{/actors/actors/assign-film/{id}(id=${actorId})}" method="post">
         <div class="mb-3">
             <label for="filmId" class="form-label">Select Film</label>
             <select class="form-control" id="filmId" name="filmId" required>
@@ -23,7 +23,7 @@
             <small th:if="${films == null}" class="text-muted">No films available to assign.</small>
         </div>
         <button type="submit" class="btn btn-primary">Assign Film</button>
-        <a th:href="@{/actors/{id}/films(id=${actorId})}" class="btn btn-secondary">Cancel</a>
+        <a th:href="@{/actors/actors/{id}/films(id=${actorId})}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

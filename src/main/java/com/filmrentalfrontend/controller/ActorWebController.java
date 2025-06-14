@@ -38,6 +38,33 @@ public class ActorWebController {
         this.restTemplate = restTemplate;
     }
 
+    @GetMapping("/actors/add")
+    public String showAddForm(Model model) {
+        LOGGER.info("Showing add actor form");
+        ActorDTO actorDTO = new ActorDTO();
+        model.addAttribute("actor", actorDTO);
+        return "actor-add";
+    }
+
+    @PostMapping("/actors/add")
+    public String addActor(@ModelAttribute ActorDTO actorDTO) {
+        try {
+            LOGGER.info("Adding actor: {}", actorDTO);
+            String url = backendApiUrl + "/post";
+            ResponseEntity<String> response = restTemplate.postForEntity(url, actorDTO, String.class);
+            LOGGER.info("Response status: {}, body: {}", response.getStatusCode(), response.getBody());
+            if (response.getStatusCode() == HttpStatus.CREATED) {
+                return "redirect:/actors?success=Actor added successfully";
+            }
+            LOGGER.warn("Add failed with status: {}", response.getStatusCode());
+            return "redirect:/actors?error=Add failed";
+        } catch (Exception e) {
+            LOGGER.error("Error adding actor", e);
+            return "redirect:/actors?error=Add failed: " + e.getMessage();
+        }
+    }
+
+
     @GetMapping
     public String listActors(@RequestParam(defaultValue = "0") int page,
                              @RequestParam(defaultValue = "10") int size,
@@ -114,31 +141,6 @@ public class ActorWebController {
         }
     }
 
-    @GetMapping("/actors/add")
-    public String showAddForm(Model model) {
-        LOGGER.info("Showing add actor form");
-        ActorDTO actorDTO = new ActorDTO();
-        model.addAttribute("actor", actorDTO);
-        return "actor-add";
-    }
-
-    @PostMapping("/actors/add")
-    public String addActor(@ModelAttribute ActorDTO actorDTO) {
-        try {
-            LOGGER.info("Adding actor: {}", actorDTO);
-            String url = backendApiUrl + "/post";
-            ResponseEntity<String> response = restTemplate.postForEntity(url, actorDTO, String.class);
-            LOGGER.info("Response status: {}, body: {}", response.getStatusCode(), response.getBody());
-            if (response.getStatusCode() == HttpStatus.CREATED) {
-                return "redirect:/actors?success=Actor added successfully";
-            }
-            LOGGER.warn("Add failed with status: {}", response.getStatusCode());
-            return "redirect:/actors?error=Add failed";
-        } catch (Exception e) {
-            LOGGER.error("Error adding actor", e);
-            return "redirect:/actors?error=Add failed: " + e.getMessage();
-        }
-    }
 
     @GetMapping("/actors/search")
     public String searchActors(@RequestParam(required = false) String firstName,

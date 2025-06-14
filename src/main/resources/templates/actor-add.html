@@ -13,7 +13,7 @@
         <span th:text="${warning}"></span>
     </div>
 
-    <form th:action="@{/actors/add}" th:object="${actor}" method="post">
+    <form th:action="@{/actors/actors/add}" th:object="${actor}" method="post">
         <div class="mb-3">
             <label for="firstName" class="form-label">First Name</label>
             <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
@@ -23,7 +23,7 @@
             <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
         </div>
         <button type="submit" class="btn btn-primary">Add Actor</button>
-        <a href="/actors" class="btn btn-secondary">Cancel</a>
+        <a th:href="@{/actors}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 </body>

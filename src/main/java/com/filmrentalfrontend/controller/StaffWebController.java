@@ -65,7 +65,7 @@ public class StaffWebController {
         return "staff-list";
     }
 
-    @GetMapping("/staff/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable Integer id, Model model) {
         try {
             String url = backendStaffApiUrl + "/all?page=0&size=" + Integer.MAX_VALUE;
@@ -94,7 +94,7 @@ public class StaffWebController {
         }
     }
 
-    @PostMapping("/staff/update/{id}")
+    @PostMapping("/update/{id}")
     public String updateStaff(@PathVariable Integer id, @ModelAttribute StaffDTO staffDTO, Model model) {
         try {
             LOGGER.info("Updating staff ID: " + id);
@@ -196,14 +196,14 @@ public class StaffWebController {
         }
     }
 
-    @GetMapping("/staff/add")
+    @GetMapping("/add")
     public String showAddForm(Model model) {
         StaffDTO staffDTO = new StaffDTO();
         model.addAttribute("staff", staffDTO);
         return "staff-add";
     }
 
-    @PostMapping("/staff/add")
+    @PostMapping("/add")
     public String addStaff(@ModelAttribute StaffDTO staffDTO, Model model) {
         try {
             String url = backendStaffApiUrl + "/add";

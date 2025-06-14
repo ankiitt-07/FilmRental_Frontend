@@ -94,14 +94,14 @@ public class InventoryWebController {
         return "inventory-list";
     }
 
-    @GetMapping("/inventories/add")
+    @GetMapping("/add")
     public String showAddForm(Model model) {
         InventoryDTO inventoryDTO = new InventoryDTO();
         model.addAttribute("inventory", inventoryDTO);
         return "inventory-add";
     }
 
-    @PostMapping("/inventories/add")
+    @PostMapping("/add")
     public String addInventory(@ModelAttribute InventoryDTO inventoryDTO, Model model) {
         try {
             // Ensure inventoryId is null for new records

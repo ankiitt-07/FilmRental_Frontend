@@ -71,7 +71,7 @@ public class PaymentController {
         return "payment";
     }
 
-    @GetMapping("/payments/add")
+    @GetMapping("/add")
     public String getAddPaymentForm(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
@@ -82,7 +82,7 @@ public class PaymentController {
         return "add-payment";
     }
 
-    @PostMapping("/payments/add")
+    @PostMapping("/add")
     public String addPayment(
             @ModelAttribute PaymentDTO paymentDTO,
             @RequestParam(defaultValue = "0") int page,
