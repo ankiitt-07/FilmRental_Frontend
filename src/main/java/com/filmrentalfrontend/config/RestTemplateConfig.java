@@ -11,26 +11,27 @@ import org.springframework.web.client.RestTemplate;
 import java.util.Collections;
 import java.util.List;
 
-//@Configuration
-//public class RestTemplateConfig {
-//
-//    @Bean
-//    public RestTemplate restTemplate() {
-//        RestTemplate restTemplate = new RestTemplate();
-//        return new RestTemplate();
-//    }
-//}
 @Configuration
 public class RestTemplateConfig {
 
     @Bean
     public RestTemplate restTemplate() {
         RestTemplate restTemplate = new RestTemplate();
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.registerModule(new JavaTimeModule());
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
-        converter.setObjectMapper(objectMapper);
-        restTemplate.setMessageConverters(Collections.singletonList(converter));
         return new RestTemplate();
     }
 }
+
+//@Configuration
+//public class RestTemplateConfig {
+//
+//    @Bean
+//    public RestTemplate restTemplate() {
+//        RestTemplate restTemplate = new RestTemplate();
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        objectMapper.registerModule(new JavaTimeModule());
+//        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
+//        converter.setObjectMapper(objectMapper);
+//        restTemplate.setMessageConverters(Collections.singletonList(converter));
+//        return new RestTemplate();
+//    }
+//}

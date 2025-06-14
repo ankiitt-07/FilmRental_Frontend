@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/payments")
 public class PaymentController {
 
     private static final Logger logger = LoggerFactory.getLogger(PaymentController.class);
@@ -34,7 +35,7 @@ public class PaymentController {
 
     private final String BASE_URL = "http://localhost:8080/api/payments";
 
-    @GetMapping("/payments")
+    @GetMapping
     public String getPayments(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,

@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
-@RequestMapping("/rentals")
+@RequestMapping("/rental")
 public class RentalController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RentalController.class);
@@ -30,7 +30,7 @@ public class RentalController {
     @Value("${backend.api.url:http://localhost:8080/api/rental}")
     private String backendApiUrl;
 
-    @Value("${backend.api.customer.url:http://localhost:8080/api/customer}")
+    @Value("${backend.api.customer.url:http://localhost:8080/api/customers}")
     private String customerApiUrl;
 
     @Value("${backend.api.inventory.url:http://localhost:8080/api/inventory}")
@@ -42,6 +42,32 @@ public class RentalController {
     public RentalController(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
+
+    // View all rentals
+    @GetMapping
+    public String listRentals(@RequestParam(defaultValue = "0") int page,
+                              @RequestParam(defaultValue = "10") int size,
+                              Model model) {
+        try {
+            String url = backendApiUrl + "/all?page=" + page + "&size=" + size;
+            LOGGER.info("Fetching rentals from: {}", url);
+            ResponseEntity<PageResponse<RentalDTO>> response = restTemplate.exchange(
+                    url, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
+            if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
+                model.addAttribute("rentals", response.getBody().getContent());
+                model.addAttribute("currentPage", page);
+                model.addAttribute("totalPages", response.getBody().getTotalPages());
+                model.addAttribute("size", size);
+            } else {
+                model.addAttribute("error", "No rentals found");
+            }
+        } catch (Exception e) {
+            LOGGER.error("Error fetching rentals: {}", e.getMessage(), e);
+            model.addAttribute("error", "Error fetching rentals: " + e.getMessage());
+        }
+        return "rental-list";
+    }
+
 
     // Helper method to load dropdown data
     private void loadDropdowns(Model model) {
@@ -107,31 +133,6 @@ public class RentalController {
         if (warnings.length() > 0) {
             model.addAttribute("warning", warnings.toString().trim());
         }
-    }
-
-    // View all rentals
-    @GetMapping
-    public String listRentals(@RequestParam(defaultValue = "0") int page,
-                              @RequestParam(defaultValue = "10") int size,
-                              Model model) {
-        try {
-            String url = backendApiUrl + "/all?page=" + page + "&size=" + size;
-            LOGGER.info("Fetching rentals from: {}", url);
-            ResponseEntity<PageResponse<RentalDTO>> response = restTemplate.exchange(
-                    url, HttpMethod.GET, null, new ParameterizedTypeReference<>() {});
-            if (response.getStatusCode() == HttpStatus.OK && response.getBody() != null) {
-                model.addAttribute("rentals", response.getBody().getContent());
-                model.addAttribute("currentPage", page);
-                model.addAttribute("totalPages", response.getBody().getTotalPages());
-                model.addAttribute("size", size);
-            } else {
-                model.addAttribute("error", "No rentals found");
-            }
-        } catch (Exception e) {
-            LOGGER.error("Error fetching rentals: {}", e.getMessage(), e);
-            model.addAttribute("error", "Error fetching rentals: " + e.getMessage());
-        }
-        return "rental-list";
     }
 
     // Add rental
