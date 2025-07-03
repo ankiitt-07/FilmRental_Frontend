@@ -19,6 +19,7 @@ public class GlobalExceptionHandler {
         return "error";
     }
 
+
     @ExceptionHandler(NoHandlerFoundException.class)
     public String handleNotFound(NoHandlerFoundException e, Model model) {
         LOGGER.error("Page not found: {}", e.getRequestURL());
